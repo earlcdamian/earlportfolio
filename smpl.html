@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>SM Center Pulilan</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+    body {
+      background-color: #fff;
+      color: #111;
+      line-height: 1.6;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    /* Navbar */
+    header {
+      background-color: black;
+      color: white;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .navbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 15px 30px;
+      flex-wrap: wrap;
+    }
+    .back-button {
+      color: white;
+      font-weight: bold;
+      text-decoration: none;
+      font-size: 1rem;
+    }
+    .back-button:hover {
+      opacity: 0.7;
+    }
+    .logo {
+      font-size: 1.2rem;
+      font-weight: bold;
+      text-transform: uppercase;
+      text-align: center;
+      flex: 1;
+    }
+
+    /* Content */
+    .content {
+      max-width: 900px;
+      margin: 30px auto;
+      padding: 0 20px;
+    }
+    .content h2 {
+      font-size: 1.6rem;
+      font-weight: bold;
+      margin-bottom: 15px;
+      text-transform: uppercase;
+    }
+    .content p {
+      font-size: 1rem;
+      margin-bottom: 10px;
+    }
+
+    /* Gallery */
+    .gallery {
+      max-width: 1200px;
+      margin: 30px auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 15px;
+      padding: 0 20px;
+    }
+    .gallery img {
+      width: 100%;
+      height: 200px; /* uniform height */
+      object-fit: cover; /* crop instead of stretch */
+      border-radius: 10px;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+    .gallery img:hover {
+      transform: scale(1.05);
+    }
+
+    /* Modal */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.8);
+      align-items: center;
+      justify-content: center;
+    }
+    .modal img {
+      max-width: 90%;
+      max-height: 90%;
+      border-radius: 10px;
+    }
+    .modal:target {
+      display: flex;
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 15px;
+      background: black;
+      color: white;
+      font-size: 0.9rem;
+      margin-top: auto;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .navbar {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .logo {
+        font-size: 1rem;
+        margin: 10px 0;
+      }
+    }
+    .gallery img[alt="Work photo 13"] {
+    grid-column: 1 / -1; /* makes it span full width */
+    justify-self: center; /* centers horizontally */
+    width: auto; /* keeps natural size */
+    height: 200px; /* match other gallery images */
+    object-fit: cover;
+  }
+}
+  </style>
+</head>
+<body>
+
+<header>
+  <nav class="navbar">
+    <a href="index.html" class="back-button">← Back</a>
+    <div class="logo">SM Center Pulilan (April 2025 – July 2025)</div>
+  </nav>
+</header>
+
+<section class="content" id="story">
+  <h2>Mall Operations, Software & Technical Support Assistant</h2>
+  <p>• Provided technical support to tenants using a ticketing system, delivered in-office and on-site assistance.</p>
+  <p>• Maintained and monitored server performance and security across the entire mall to ensure smooth operations.</p>
+  <p>• Handled software installations, system updates, and laptop deployments.</p>
+  <p>• Delivered end-user support for laptops and ensured reliable hardware and software functionality.</p>
+  <p>• Developed a Janitor Monitoring System that tracks janitors’ names, positions, promotions, and control numbers for easy reference. Also created a Key Holder Management System with full CRUD functionality for tenant/store key assignments, including a PDF conversion feature for printed guard reference — ensuring only authorized personnel can access store keys.</p>
+</section>
+
+<section class="gallery" id="gallery">
+  <img src="smplfam.jpg" alt="Work photo 1">
+  <img src="smpl2.jpg" alt="Work photo 2">
+  <img src="smpl3.jpg" alt="Work photo 3">
+  <img src="smpl4.jpg" alt="Work photo 4">
+  <img src="smpl5.jpg" alt="Work photo 5">
+  <img src="smpl6.jpg" alt="Work photo 6">
+  <img src="smpl7.jpg" alt="Work photo 7">
+  <img src="smpl9.jpg" alt="Work photo 9">
+  <img src="smpl11.jpg" alt="Work photo 10">
+  <img src="smpl12.jpg" alt="Work photo 12">
+  <img src="smpl13.jpg" alt="Work photo 13">
+
+</section>
+
+<!-- Modal -->
+<div id="modal" class="modal">
+  <img src="" id="modal-img" alt="Expanded view">
+</div>
+
+<footer>
+  © Earl Damian Portfolio - 2025
+</footer>
+
+<script>
+  const modal = document.getElementById("modal");
+  const modalImg = document.getElementById("modal-img");
+  const galleryImgs = document.querySelectorAll(".gallery img");
+
+  galleryImgs.forEach(img => {
+    img.addEventListener("click", () => {
+      modal.style.display = "flex";
+      modalImg.src = img.src;
+    });
+  });
+
+  modal.addEventListener("click", () => {
+    modal.style.display = "none";
+  });
+</script>
+
+</body>
+</html>
